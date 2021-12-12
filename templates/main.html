@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    form {
+      margin: auto;
+      width: 35%;
+    }
+    .result {
+      margin: auto;
+      width: 35%;
+      border: 1px solid #ccc;
+    }
+  </style>
+  <head>
+    <title>Bike Usage Model</title>
+  </head>
+  <form action="{{ url_for('main') }}" method="POST">
+    <fieldset>
+      <legend>Input values:</legend>
+      Minimum Temperature:
+      <input name="MinTemp" type="number" required />
+      <br />
+      <br />
+      Maximum Temperature:
+      <input name="MaxTemp" type="number" required />
+      <br />
+      <br />
+      Evaporation:
+      <input name="Evaporation" type="number" required />
+      <br />
+      <br />
+      Sunshine:
+      <input name="Sunshine" type="number" required />
+      <br />
+      <br />
+      Wind Gust Direction:
+      <input name="WindGustDir" type="number" required />
+      <br />
+      <br />
+      Wind Gust Speed:
+      <input name="WindGustSpeed" type="number" required />
+      <br />
+      <br />
+      Wind Direction Morning:
+      <input name="WindDir9am" type="number" required />
+      <br />
+      <br />
+      Wind Direction Afternoon:
+      <input name="WindDir3pm" type="number" required />
+      <br />
+      <br />
+      Wind Speed:
+      <input name="WindSpeed9am" type="number" required />
+      <br />
+      <br />
+      Humidity:
+      <input name="Humidity9am" type="number" required />
+      <br />
+      <br />
+      Pressure:
+      <input name="Pressure9am" type="number" required />
+      <br />
+      <br />
+      Cloud:
+      <input name="Cloud9am" type="number" required />
+      <br />
+      <br />
+      Temperature:
+      <input name="Temp9am" type="number" required />
+      <br />
+      <br />
+      RainToday (1 if yes or 0 is no):
+      <input name="RainToday" type="number" required />
+      <br />
+      <br />
+      <input type="submit" />
+    </fieldset>
+  </form>
+  <br />
+  <div class="result" align="center">
+    {% if result %} {% for variable, value in original_input.items() %}
+    <b>{{ variable }}</b> : {{ value }} {% endfor %}
+    <br />
+    <br />
+    Predicted number of bikes in use:
+    <p style="font-size: 50px">{{ result }}</p>
+    {% endif %}
+  </div>
+</html>
